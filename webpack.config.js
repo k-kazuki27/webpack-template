@@ -6,7 +6,7 @@ module.exports = (env, argv) => ({
   entry: './src/scripts/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle-[hash].js'
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
@@ -21,7 +21,7 @@ module.exports = (env, argv) => ({
       },
       {
         test: /\.(jpg|png|gif)$/,
-        use: ['url-loader']
+        use: ['file-loader']
       },
       {
         test: /\.html$/,
