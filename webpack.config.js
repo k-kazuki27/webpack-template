@@ -7,7 +7,7 @@ module.exports = (env, argv) => ({
   entry: './src/scripts/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle-[hash].js'
+    filename: 'bundle.js'
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
