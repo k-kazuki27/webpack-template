@@ -1,6 +1,7 @@
-var path = require('path');
+const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 
 module.exports = (env, argv) => ({
   entry: './src/scripts/index.js',
@@ -21,7 +22,7 @@ module.exports = (env, argv) => ({
       },
       {
         test: /\.(jpg|png|gif)$/,
-        use: ['file-loader']
+        use: ['url-loader']
       },
       {
         test: /\.html$/,
@@ -32,7 +33,9 @@ module.exports = (env, argv) => ({
   plugins: [
     new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
+      template: './src/index.html',
+      inlineSource: '.(js|css)$'
+    }),
+    new HtmlWebpackInlineSourcePlugin()
   ]
 });
